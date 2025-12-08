@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "clean": "rm -rf node_modules dist",
     "start": "node server.js"
   },
   "repository": {

@@ -1,24 +1,19 @@
-version: "3.8"
-
 services:
   mysql:
     image: mysql:8
     container_name: mysql-container
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: testdb
+      MYSQL_DATABASE: mydb
     ports:
-      - "3306:3306"
+      - "3307:3306"
 
   node:
     build: .
+    image: my-node-app
     container_name: node-container
-    ports:
-      - "3000:3000"
     depends_on:
       - mysql
-    environment:
-      DB_HOST: mysql
-      DB_USER: root
-      DB_PASS: root
-      DB_NAME: testdb
+    ports:
+      - "3000:3000"
